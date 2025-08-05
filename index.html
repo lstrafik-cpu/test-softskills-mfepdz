@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test des Soft Skills</title>
+  <script>
+    async function envoyerFormulaire(event) {
+      event.preventDefault();
+      const form = document.forms["testForm"];
+      let score = 0;
+
+      const data = {
+        nom: form.nom.value,
+        email: form.email.value,
+        specialite: form.specialite.value,
+        q1: form.q1.value,
+        q2: form.q2.value,
+        q3: form.q3.value,
+        q4: form.q4.value,
+        q5: form.q5.value,
+        q6: form.q6.value,
+        q7: form.q7.value,
+        q8: form.q8.value,
+        q9: form.q9.value,
+        q10: form.q10.value,
+        q11: form.q11.value,
+        q12: form.q12.value,
+        q13: form.q13.value,
+        q14: form.q14.value,
+        q15: form.q15.value,
+        q16: form.q16.value,
+        q17: form.q17.value,
+        q18: form.q18.value,
+      };
+
+      // Calcul du score
+      for (let i = 1; i <= 18; i++) {
+        score += parseInt(data[`q${i}`]);
+      }
+      data.score = score;
+
+      // Envoi
+      const response = await fetch("https://script.google.com/macros/s/AKfycbz15rZxCBB7LdeXOVUYdQVeV8rRRw3t2_5xUpP9rAiSzp6HlZPhdiPnKJNECQqoLwII/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      });
+
+      alert("Réponses envoyées avec succès !");
+      form.reset();
+    }
+  </script>
+</head>
+<body>
+  <h1>Test de Compétences Transversales (Soft Skills)</h1>
+  <form name="testForm" onsubmit="envoyerFormulaire(event)">
+    <label>Nom:</label><br><input name="nom" required><br>
+    <label>Email:</label><br><input name="email" type="email" required><br>
+    <label>Spécialité:</label><br><input name="specialite" required><br><br>
+
+    <!-- Communication -->
+    <h3>🗣️ Communication</h3>
+    <p>1. Tu travailles en groupe et un camarade s’exprime difficilement. Que fais-tu ?</p>
+    <select name="q1" required>
+      <option value="4">Je l'encourage calmement à s'exprimer</option>
+      <option value="3">Je le laisse finir</option>
+      <option value="2">Je lui coupe parfois la parole</option>
+      <option value="1">Je parle à sa place</option>
+    </select>
+
+    <p>2. Quand tu dois présenter une idée, comment t’y prends-tu ?</p>
+    <select name="q2" required>
+      <option value="4">Je structure mon idée et l’explique avec clarté</option>
+      <option value="3">Je parle librement</option>
+      <option value="2">Je m'exprime brièvement</option>
+      <option value="1">Je reste silencieux</option>
+    </select>
+
+    <p>3. Si tu n’es pas d’accord avec un responsable, tu :</p>
+    <select name="q3" required>
+      <option value="4">Exprimes ton désaccord calmement</option>
+      <option value="3">Évites le conflit</option>
+      <option value="2">Te tais et obéis</option>
+      <option value="1">T’énerves directement</option>
+    </select>
+
+    <!-- Travail d'équipe -->
+    <h3>🤝 Travail d’équipe</h3>
+    <p>4. Tu es en retard sur un projet, un camarade propose de t’aider. Quelle est ta réaction ?</p>
+    <select name="q4" required>
+      <option value="4">J’accepte et je le remercie</option>
+      <option value="3">J’accepte sans plus</option>
+      <option value="2">Je refuse poliment</option>
+      <option value="1">Je refuse sèchement</option>
+    </select>
+
+    <p>5. Un conflit éclate dans ton groupe, que fais-tu ?</p>
+    <select name="q5" required>
+      <option value="4">Je propose une médiation</option>
+      <option value="3">Je reste neutre</option>
+      <option value="2">Je prends parti</option>
+      <option value="1">Je quitte le groupe</option>
+    </select>
+
+    <p>6. Tu vois une tâche oubliée par tous, que fais-tu ?</p>
+    <select name="q6" required>
+      <option value="4">Je la fais spontanément</option>
+      <option value="3">Je la fais après demande</option>
+      <option value="2">Je l’ignore</option>
+      <option value="1">Je critique les autres</option>
+    </select>
+
+    <!-- Pensée critique -->
+    <h3>🧠 Pensée critique</h3>
+    <p>7. Face à un obstacle, comment trouves-tu des solutions ?</p>
+    <select name="q7" required>
+      <option value="4">Je réfléchis et explore plusieurs options</option>
+      <option value="3">Je demande de l’aide</option>
+      <option value="2">Je panique</option>
+      <option value="1">J’abandonne</option>
+    </select>
+
+    <p>8. Tu reçois une info sur les réseaux. Quelle est ta réaction ?</p>
+    <select name="q8" required>
+      <option value="4">Je vérifie la source</option>
+      <option value="3">Je doute</option>
+      <option value="2">Je partage sans lire</option>
+      <option value="1">Je la crois directement</option>
+    </select>
+
+    <p>9. Propose une nouvelle façon de sensibiliser à l’environnement :</p>
+    <select name="q9" required>
+      <option value="4">Via des jeux ou BD</option>
+      <option value="3">Par des conférences</option>
+      <option value="2">Des affiches</option>
+      <option value="1">Pas d’idée</option>
+    </select>
+
+    <!-- Autonomie -->
+    <h3>💪 Autonomie</h3>
+    <p>10. Comment réagis-tu si un projet ne t’intéresse pas ?</p>
+    <select name="q10" required>
+      <option value="4">Je me motive par défi</option>
+      <option value="3">Je fais le minimum</option>
+      <option value="2">Je délègue</option>
+      <option value="1">Je l’abandonne</option>
+    </select>
+
+    <p>11. Tu as plusieurs choses à faire dans la journée, comment t’organises-tu ?</p>
+    <select name="q11" required>
+      <option value="4">Je planifie mes priorités</option>
+      <option value="3">Je commence par hasard</option>
+      <option value="2">Je remets au lendemain</option>
+      <option value="1">Je me disperse</option>
+    </select>
+
+    <p>12. On t’attribue une erreur que tu n’as pas commise. Que fais-tu ?</p>
+    <select name="q12" required>
+      <option value="4">Je l’explique calmement</option>
+      <option value="3">Je conteste</option>
+      <option value="2">Je me tais</option>
+      <option value="1">Je me fâche</option>
+    </select>
+
+    <!-- Leadership -->
+    <h3>💡 Leadership & Engagement</h3>
+    <p>13. Ton groupe hésite sur une action urgente. Comment agis-tu ?</p>
+    <select name="q13" required>
+      <option value="4">Je prends une décision raisonnée</option>
+      <option value="3">Je propose un vote</option>
+      <option value="2">Je ne décide pas</option>
+      <option value="1">Je me retire</option>
+    </select>
+
+    <p>14. Tu veux convaincre des camarades de s’impliquer dans une activité. Comment t’y prends-tu ?</p>
+    <select name="q14" required>
+      <option value="4">J’explique les bénéfices</option>
+      <option value="3">Je les motive doucement</option>
+      <option value="2">Je leur impose</option>
+      <option value="1">Je renonce</option>
+    </select>
+
+    <p>15. Un imprévu important survient, comment gères-tu la pression ?</p>
+    <select name="q15" required>
+      <option value="4">Je respire, je m’adapte</option>
+      <option value="3">Je demande conseil</option>
+      <option value="2">Je panique</option>
+      <option value="1">Je quitte</option>
+    </select>
+
+    <!-- Citoyenneté & Éthique -->
+    <h3>🌍 Citoyenneté & Éthique</h3>
+    <p>16. Un collègue semble en détresse, comment réagis-tu ?</p>
+    <select name="q16" required>
+      <option value="4">Je lui parle, je propose de l’aide</option>
+      <option value="3">Je l’écoute seulement</option>
+      <option value="2">Je l’ignore</option>
+      <option value="1">Je me moque</option>
+    </select>
+
+    <p>17. Tu constates une tricherie. Quelle est ta réaction ?</p>
+    <select name="q17" required>
+      <option value="4">Je la signale</option>
+      <option value="3">J’en parle au camarade</option>
+      <option value="2">J’en parle à d’autres</option>
+      <option value="1">Je fais pareil</option>
+    </select>
+
+    <p>18. Participes-tu à des actions citoyennes ? Pourquoi ?</p>
+    <select name="q18" required>
+      <option value="4">Oui, pour contribuer à la société</option>
+      <option value="3">Parfois, selon les causes</option>
+      <option value="2">Rarement</option>
+      <option value="1">Jamais</option>
+    </select>
+
+    <br><br>
+    <button type="submit">Envoyer</button>
+  </form>
+</body>
+</html>
